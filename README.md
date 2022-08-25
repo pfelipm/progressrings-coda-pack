@@ -6,4 +6,4 @@
 
 A Coda Pack that generates customizable svg progress rings.
 
-Demo Coda doc :point\_right: here.
+Demo Coda doc :point\_right:here.
