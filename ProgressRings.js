@@ -245,6 +245,7 @@ pack.addFormula({
     return coda.SvgConstants.DataUrlPrefixWithDarkModeSupport + encoded;
 
   }
+
 });
 
 /**
