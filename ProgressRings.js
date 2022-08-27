@@ -46,89 +46,78 @@ pack.addFormula({
     coda.makeParameter({
       type: coda.ParameterType.Number,
       name: "max",
-      description: "Max value",
-      suggestedValue: 1,
+      description: "Max value, defaults to 1",
       optional: true
     }),
     coda.makeParameter({
       type: coda.ParameterType.String,
       name: "fillColorLight",
-      description: "Color of filled ring in light mode, use any svg name or #RRGGBB",
-      suggestedValue: "purple",
+      description: "Color of filled ring in light mode, use a svg named color or #RRGGBB, defaults to purple",
       optional: true,
       autocomplete: SVG_COLOR_NAMES
     }),
     coda.makeParameter({
       type: coda.ParameterType.String,
       name: "emptyColorLight",
-      description: "Color of empty ring in light mode, use a svg color name or #RRGGBB",
-      suggestedValue: "lightgray", // 'black' if dark mode
+      description: "Color of empty ring in light mode, use a svg named color or #RRGGBB, defaults to lightgray",
       optional: true,
       autocomplete: SVG_COLOR_NAMES
     }),
     coda.makeParameter({
       type: coda.ParameterType.String,
       name: "fillColorDark",
-      description: "Color of filled ring in dark mode, use any svg name or #RRGGBB",
-      suggestedValue: "purple",
+      description: "Color of filled ring in dark mode, use a svg named color or #RRGGBB, defaults to purple",
       optional: true,
       autocomplete: SVG_COLOR_NAMES
     }),
     coda.makeParameter({
       type: coda.ParameterType.String,
       name: "emptyColorDark",
-      description: "Color of empty ring in dark mode, use a svg color name or #RRGGBB",
-      suggestedValue: "#142433",
+      description: "Color of empty ring in dark mode, use a svg named color or #RRGGBB, defaults to dimgray",
       optional: true,
       autocomplete: SVG_COLOR_NAMES
     }),
     coda.makeParameter({
       type: coda.ParameterType.Number,
       name: "radius",
-      description: "Radius of ring (pixels)",
-      suggestedValue: 100,
+      description: "Radius of ring (pixels), defaults to 100",
       optional: true
     }),
     coda.makeParameter({
       type: coda.ParameterType.Number,
       name: "thickness",
-      description: "Thickness of ring (pixels)",
+      description: "Thickness of ring (pixels), defaults to 75",
       optional: true
     }),
     coda.makeParameter({
       type: coda.ParameterType.Boolean,
       name: "drawPie",
-      description: "If true, draw a segmented pie chart",
-      suggestedValue: false,
+      description: "If true, draw a segmented pie chart, defaults to false",
       optional: true
     }),
     coda.makeParameter({
       type: coda.ParameterType.Number,
       name: "steps",
-      description: "Number of progress steps",
-      suggestedValue: 16,
+      description: "Number of progress steps, defaults to 16",
       optional: true
     }),
     coda.makeParameter({
       type: coda.ParameterType.String,
       name: "stepRounding",
-      description: "Progress step adjustment",
-      autocomplete: ["down", "up", "near"],
-      suggestedValue: "lower",
+      description: "Progress step adjustment, defaults to near",
+      autocomplete: ["down", "near", "up"],
       optional: true
     }),
     coda.makeParameter({
       type: coda.ParameterType.Boolean,
       name: "avoidFalseComplete",
-      description: "Always avoid full ring if progress not exactly 100%",
-      suggestedValue: true,
+      description: "Always avoid full ring if progress not exactly 100%, defaults to true",
       optional: true
     }),
     coda.makeParameter({
       type: coda.ParameterType.Boolean,
       name: "avoidFalseEmpty",
-      description: "Always avoid empty ring if progress greater than 0%",
-      suggestedValue: false,
+      description: "Always avoid empty ring if progress greater than 0%, defaults to false",
       optional: true
     }),
   ],
@@ -143,6 +132,7 @@ pack.addFormula({
     { params: [0.6, "radius: 50", "thickness: 25"], result: "// 60% progress ring with some optional settings" }
   ],
 
+  // Here comes the important part, notice the default values for the optional parameters
   execute: async function ([value,
     max = 1,
     fillColorLight = "purple",
@@ -150,10 +140,10 @@ pack.addFormula({
     fillColorDark = "purple",
     emptyColorDark = "dimgray",
     radius = 100,
-    thickness = 50,
+    thickness = 75,
     drawPie = false,
     steps = 16,
-    stepRounding = "down",
+    stepRounding = "near",
     avoidFalseComplete = true,
     avoidFalseEmpty = false],
     context) {
@@ -253,6 +243,6 @@ pack.addFormula({
  */
 pack.addColumnFormat({
   name: "Progress rings",
-  instructions: "Displays the [0..1] values of a column as default progress rings",
+  instructions: "Displays the [0..1] values inside a column as default progress rings",
   formulaName: "ProgressRing",
 });
