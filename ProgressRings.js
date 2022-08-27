@@ -26,6 +26,20 @@ const SVG_COLOR_NAMES = [
   "turquoise", "violet", "wheat", "white", "whitesmoke", "yellow", "yellowgreen"
 ];
 
+// Coda only seems to support as much as 100 values in its autocomplete feature, thus this temporary? reduced set
+const SVG_COLOR_NAMES_100 = [
+  "aliceblue", "antiquewhite", "aqua", "aquamarine", "bisque", "black", "blanchedalmond", "blue", "brown", "burlywood",
+  "cadetblue", "coral", "crimson", "cyan", "darkblue", "darkcyan", "darkgoldenrod", "darkgray", "darkgreen", "darkolivegreen",
+  "darkorange", "darkred", "darkseagreen", "darkslateblue", "darkslategray", "darkturquoise", "deeppink", "deepskyblue", "dimgray", "dodgerblue",
+  "firebrick", "fuchsia", "gold", "goldenrod", "gray", "green", "greenyellow", "hotpink", "indianred", "indigo",
+  "khaki", "lavender", "lavenderblush", "lightblue", "lightcoral", "lightcyan", "lightgray", "lightgreen", "lightseagreen", "lightskyblue",
+  "lightslategray", "lightsteelblue", "lightyellow", "lime", "limegreen", "linen", "magenta", "mediumblue", "mediumpurple", "mediumseagreen",
+  "mediumslateblue", "mediumspringgreen", "mediumturquoise", "mediumvioletred", "midnightblue", "moccasin", "olive", "olivedrab", "orange", "orangered",
+  "palegoldenrod", "palegreen", "palevioletred", "pink", "plum", "powderblue", "purple", "red", "rosybrown", "royalblue",
+  "salmon", "sandybrown", "seagreen", "sienna", "silver", "skyblue", "slateblue", "slategray", "springgreen", "steelblue",
+  "teal", "thistle", "tomato", "turquoise", "violet", "wheat", "white", "whitesmoke", "yellow", "yellowgreen"
+];
+
 // Some padding around the progress rings, probably unnecessary
 const SAFE_PADDING_FACTOR = 0.05;
 
@@ -54,28 +68,28 @@ pack.addFormula({
       name: "fillColorLight",
       description: "Color of filled ring in light mode, use a svg named color or #RRGGBB, defaults to purple",
       optional: true,
-      autocomplete: SVG_COLOR_NAMES
+      autocomplete: SVG_COLOR_NAMES_100
     }),
     coda.makeParameter({
       type: coda.ParameterType.String,
       name: "emptyColorLight",
       description: "Color of empty ring in light mode, use a svg named color or #RRGGBB, defaults to lightgray",
       optional: true,
-      autocomplete: SVG_COLOR_NAMES
+      autocomplete: SVG_COLOR_NAMES_100
     }),
     coda.makeParameter({
       type: coda.ParameterType.String,
       name: "fillColorDark",
       description: "Color of filled ring in dark mode, use a svg named color or #RRGGBB, defaults to purple",
       optional: true,
-      autocomplete: SVG_COLOR_NAMES
+      autocomplete: SVG_COLOR_NAMES_100
     }),
     coda.makeParameter({
       type: coda.ParameterType.String,
       name: "emptyColorDark",
       description: "Color of empty ring in dark mode, use a svg named color or #RRGGBB, defaults to dimgray",
       optional: true,
-      autocomplete: SVG_COLOR_NAMES
+      autocomplete: SVG_COLOR_NAMES_100
     }),
     coda.makeParameter({
       type: coda.ParameterType.Number,
