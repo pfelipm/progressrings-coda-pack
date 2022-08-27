@@ -26,7 +26,7 @@ const SVG_COLOR_NAMES = [
   "turquoise", "violet", "wheat", "white", "whitesmoke", "yellow", "yellowgreen"
 ];
 
-// The autocomplete feature in Coda only seems to support as much as 100 elements, thus this temporary? reduced set
+// The autocomplete feature in Coda only seems to support as much as 100 elements, thus this temporary? reduced color set
 const SVG_COLOR_NAMES_100 = [
   "aliceblue", "antiquewhite", "aqua", "aquamarine", "bisque", "black", "blanchedalmond", "blue", "brown", "burlywood",
   "cadetblue", "coral", "crimson", "cyan", "darkblue", "darkcyan", "darkgoldenrod", "darkgray", "darkgreen", "darkolivegreen",
@@ -203,7 +203,10 @@ pack.addFormula({
     if (avoidFalseEmpty && ratio == 0 && value > 0) ratio = Math.ceil(steps * value / max) / steps;
 
     const angle = (Math.PI / 2 - 2 * Math.PI * ratio);
-    const breakpoint = { x: Math.round(center.x + radius * Math.cos(angle)), y: Math.round(center.y - radius * Math.sin(angle)) };
+    const breakpoint = {
+      x: Math.round(center.x + radius * Math.cos(angle)),
+      y: Math.round(center.y - radius * Math.sin(angle))
+    };
 
     // console.info(value, radius, size, center, start, breakpoint);
 
@@ -236,7 +239,6 @@ pack.addFormula({
       if (ratio == 1) svg = svg.replace("__FILL_COLOR__", "var(--fillColor)");
       else if (ratio == 0) svg = svg.replace("__FILL_COLOR__", "var(--emptyColor)");
     }
-
 
     // Hack to draw 100% ring, svg arc entities are not good at it,and using a couple of arcs of the same color is very slightly wrong
     if (ratio == 1) svg = svg.replace("__RING__", `<circle class ="filled" cx="${center.x}" cy="${center.y}" r="${radius}" />`);
