@@ -205,7 +205,7 @@ pack.addFormula({
             --fillColor: ${fillColorLight};
             --emptyColor: ${emptyColorLight};
           }
-          svg { stroke-width: ${thickness}; fill: none; }
+          svg { stroke-width: ${thickness}; fill: __FILL_COLOR__; }
           .filled { stroke: var(--fillColor); }
           .empty { stroke: var(--emptyColor); }
           #${darkModeId}:target {
@@ -216,8 +216,16 @@ pack.addFormula({
       </svg>
     `.trim();
 
+    // Hack to avoid center point of different color when drawing 0% or 100% pies
+    if (!drawPie || (ratio > 0 && ratio < 1)) svg = svg.replace("__FILL_COLOR__", "none")
+    else {
+      if (ratio == 1) svg = svg.replace("__FILL_COLOR__", "var(--fillColor)");
+      else if (ratio == 0) svg = svg.replace("__FILL_COLOR__", "var(--emptyColor)");
+    }
+
+
     // Hack to draw 100% ring, svg arc entities are not good at it,and using a couple of arcs of the same color is very slightly wrong
-    if (ratio == 1) svg = svg.replace("__RING", `<circle class ="filled" cx="${center.x}" cy="${center.y}" r="${radius}" />`);
+    if (ratio == 1) svg = svg.replace("__RING__", `<circle class ="filled" cx="${center.x}" cy="${center.y}" r="${radius}" />`);
 
     // ...and another hack to draw a 0% progress ring
     else if (ratio == 0) svg = svg.replace("__RING__", `<circle class ="empty" cx="${center.x}" cy="${center.y}" r="${radius}" />)`);
