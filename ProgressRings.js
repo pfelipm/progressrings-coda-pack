@@ -26,7 +26,7 @@ const SVG_COLOR_NAMES = [
   "turquoise", "violet", "wheat", "white", "whitesmoke", "yellow", "yellowgreen"
 ];
 
-// Coda only seems to support as much as 100 values in its autocomplete feature, thus this temporary? reduced set
+// The autocomplete feature in Coda only seems to support as much as 100 elements, thus this temporary? reduced set
 const SVG_COLOR_NAMES_100 = [
   "aliceblue", "antiquewhite", "aqua", "aquamarine", "bisque", "black", "blanchedalmond", "blue", "brown", "burlywood",
   "cadetblue", "coral", "crimson", "cyan", "darkblue", "darkcyan", "darkgoldenrod", "darkgray", "darkgreen", "darkolivegreen",
