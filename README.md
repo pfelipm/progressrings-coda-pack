@@ -1,4 +1,4 @@
-# Progress rings for Coda
+# Progress Rings for Coda
 
 ![](https://user-images.githubusercontent.com/12829262/187098792-949e2887-7f5b-40de-b35c-c07fcc829f9d.png)
 
