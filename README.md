@@ -1,6 +1,6 @@
 # Progress rings for Coda
 
-![](https://user-images.githubusercontent.com/12829262/187098759-9c3c72b1-aed7-4189-8868-45c05047f720.png)
+![](https://user-images.githubusercontent.com/12829262/187098792-949e2887-7f5b-40de-b35c-c07fcc829f9d.png)
 
 ![Created with - JavaScript](https://img.shields.io/static/v1?label=Created+with&message=JavaScript&color=blue&logo=JavaScript)
 
