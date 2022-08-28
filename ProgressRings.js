@@ -255,7 +255,6 @@ pack.addFormula({
     `.trim());
 
     const encoded = Buffer.from(svg).toString("base64");
-    //return coda.SvgConstants.DataUrlPrefix + encoded;
     return coda.SvgConstants.DataUrlPrefixWithDarkModeSupport + encoded;
 
   }
