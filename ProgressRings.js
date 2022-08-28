@@ -1,6 +1,6 @@
 /**
  * A little SVG progress ring generator Pack for Coda
- * @pfelipm, August 2022 / GNU GPL v3
+ * @pfelipm (August 2022) / GNU GPL v3
  */
 
 import * as coda from "@codahq/packs-sdk";
