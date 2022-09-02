@@ -1,6 +1,6 @@
 /**
  * A little SVG progress ring generator Pack for Coda
- * @pfelipm (August 2022) / GNU GPL v3
+ * @pfelipm, August 2022 / GNU GPL v3
  */
 
 import * as coda from "@codahq/packs-sdk";
@@ -148,19 +148,19 @@ pack.addFormula({
 
   // Here comes the important part, notice the default values for the optional parameters
   execute: async function ([value,
-    max = 1,
-    fillColorLight = "purple",
-    emptyColorLight = "lightgray",
-    fillColorDark = "purple",
-    emptyColorDark = "dimgray",
-    radius = 100,
-    thickness = 75,
-    drawPie = false,
-    steps = 16,
-    stepRounding = "near",
-    avoidFalseComplete = true,
-    avoidFalseEmpty = false],
-    context) {
+                           max = 1,
+                           fillColorLight = "purple",
+                           emptyColorLight = "lightgray",
+                           fillColorDark = "purple",
+                           emptyColorDark = "dimgray",
+                           radius = 100,
+                           thickness = 75,
+                           drawPie = false,
+                           steps = 16,
+                           stepRounding = "near",
+                           avoidFalseComplete = true,
+                           avoidFalseEmpty = false],
+                           context) {
 
     // Parameter adjustments
     radius = Math.round(Math.abs(radius));
