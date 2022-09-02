@@ -26,7 +26,7 @@ const SVG_COLOR_NAMES = [
   "turquoise", "violet", "wheat", "white", "whitesmoke", "yellow", "yellowgreen"
 ];
 
-// The autocomplete feature in Coda only seems to support as much as 100 elements, thus this temporary? reduced color set
+// Coda only seems to support as much as 100 values in its autocomplete feature
 const SVG_COLOR_NAMES_100 = [
   "aliceblue", "antiquewhite", "aqua", "aquamarine", "bisque", "black", "blanchedalmond", "blue", "brown", "burlywood",
   "cadetblue", "coral", "crimson", "cyan", "darkblue", "darkcyan", "darkgoldenrod", "darkgray", "darkgreen", "darkolivegreen",
@@ -148,26 +148,25 @@ pack.addFormula({
 
   // Here comes the important part, notice the default values for the optional parameters
   execute: async function ([value,
-                           max = 1,
-                           fillColorLight = "purple",
-                           emptyColorLight = "lightgray",
-                           fillColorDark = "purple",
-                           emptyColorDark = "dimgray",
-                           radius = 100,
-                           thickness = 75,
-                           drawPie = false,
-                           steps = 16,
-                           stepRounding = "near",
-                           avoidFalseComplete = true,
-                           avoidFalseEmpty = false],
-                           context) {
+    max = 1,
+    fillColorLight = "purple",
+    emptyColorLight = "lightgray",
+    fillColorDark = "purple",
+    emptyColorDark = "dimgray",
+    radius = 100,
+    thickness = 75,
+    drawPie = false,
+    steps = 16,
+    stepRounding = "near",
+    avoidFalseComplete = true,
+    avoidFalseEmpty = false],
+    context) {
 
     // Parameter adjustments
     radius = Math.round(Math.abs(radius));
     thickness = Math.round(Math.abs(thickness));
     steps = Math.round(Math.abs(steps));
     stepRounding = stepRounding.toLowerCase();
-
 
     // Some previous checks
     if (value < 0 || max < 0) throw new coda.UserVisibleError("Use non-negative numbers for value and max params!");
@@ -203,10 +202,7 @@ pack.addFormula({
     if (avoidFalseEmpty && ratio == 0 && value > 0) ratio = Math.ceil(steps * value / max) / steps;
 
     const angle = (Math.PI / 2 - 2 * Math.PI * ratio);
-    const breakpoint = {
-      x: Math.round(center.x + radius * Math.cos(angle)),
-      y: Math.round(center.y - radius * Math.sin(angle))
-    };
+    const breakpoint = { x: Math.round(center.x + radius * Math.cos(angle)), y: Math.round(center.y - radius * Math.sin(angle)) };
 
     // console.info(value, radius, size, center, start, breakpoint);
 
@@ -240,6 +236,7 @@ pack.addFormula({
       else if (ratio == 0) svg = svg.replace("__FILL_COLOR__", "var(--emptyColor)");
     }
 
+
     // Hack to draw 100% ring, svg arc entities are not good at it,and using a couple of arcs of the same color is very slightly wrong
     if (ratio == 1) svg = svg.replace("__RING__", `<circle class ="filled" cx="${center.x}" cy="${center.y}" r="${radius}" />`);
 
@@ -255,6 +252,7 @@ pack.addFormula({
     `.trim());
 
     const encoded = Buffer.from(svg).toString("base64");
+    //return coda.SvgConstants.DataUrlPrefix + encoded;
     return coda.SvgConstants.DataUrlPrefixWithDarkModeSupport + encoded;
 
   }
