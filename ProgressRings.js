@@ -1,5 +1,5 @@
 /**
- * A little SVG progress ring generator Pack for Coda
+ * An SVG progress ring generator Pack for Coda
  * @pfelipm, August 2022 / GNU GPL v3
  */
 
@@ -235,7 +235,6 @@ pack.addFormula({
       if (ratio == 1) svg = svg.replace("__FILL_COLOR__", "var(--fillColor)");
       else if (ratio == 0) svg = svg.replace("__FILL_COLOR__", "var(--emptyColor)");
     }
-
 
     // Hack to draw 100% ring, svg arc entities are not good at it,and using a couple of arcs of the same color is very slightly wrong
     if (ratio == 1) svg = svg.replace("__RING__", `<circle class ="filled" cx="${center.x}" cy="${center.y}" r="${radius}" />`);
